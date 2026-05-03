@@ -1,0 +1,33 @@
+from Crypto.Util.number import long_to_bytes, inverse
+from sympy.ntheory.residue_ntheory import discrete_log
+
+# 1. Data from the papyrus
+p = 1905671816403772611477075447515791022372594380344434356222414517909417652709503859707116441682578631751
+g = 35184372088891
+h = 516040377462955752574346949927976425016812503608111809810810609404241010158862043385306853745074259882
+c1 = 1325105302324133202030863283172149567672069489633456911926998051053347443881714632147496615921683435710
+c2 = 1105652739004198834387911095412299689766266872864244844677769021917226737321429032589227873083116104228
+
+print("[+] Factorizing p-1 and solving Discrete Log (Pohlig-Hellman)...")
+
+try:
+    # 2. Find the private key x
+    # This solves g^x = h (mod p)
+    x = discrete_log(p, h, g)
+    print(f"[+] Found Private Key x: {x}")
+
+    # 3. Decrypt ElGamal
+    # formula: m = c2 * (c1^x)^-1 mod p
+    shared_secret = pow(c1, x, p)
+    m = (c2 * inverse(shared_secret, p)) % p
+
+    # 4. Convert to string
+    meal = long_to_bytes(m).decode('utf-8').strip()
+    print(f"\n[!] Success! The magical meal is: {meal}")
+    print(f"Flag: novruzCTF{{{meal}}}")
+
+except Exception as e:
+    print(f"[-] Error: {e}")
+    # Fallback: if decode fails, show hex to see what's happening
+    if 'm' in locals():
+        print(f"[-] Hex of m: {hex(m)}")
