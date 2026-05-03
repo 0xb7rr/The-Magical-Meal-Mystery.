@@ -1,6 +1,32 @@
 # The Magical Meal Mystery.
 - This write-up details the solution to a cryptography challenge involving ElGamal encryption. The challenge provided encrypted data and required participants to decrypt it to reveal a hidden message.
 
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡠⢤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠟⠃⠀⠀⠙⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠋⠀⠀⠀⠀⠀⠀⠘⣆⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠾⢛⠒⠀⠀⠀⠀⠀⠀⠀⢸⡆⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣶⣄⡈⠓⢄⠠⡀⠀⠀⠀⣄⣷⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣷⠀⠈⠱⡄⠑⣌⠆⠀⠀⡜⢻⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡿⠳⡆⠐⢿⣆⠈⢿⠀⠀⡇⠘⡆⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣷⡇⠀⠀⠈⢆⠈⠆⢸⠀⠀⢣⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣧⠀⠀⠈⢂⠀⡇⠀⠀⢨⠓⣄⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣦⣤⠖⡏⡸⠀⣀⡴⠋⠀⠈⠢⡀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⠁⣹⣿⣿⣿⣷⣾⠽⠖⠊⢹⣀⠄⠀⠀⠀⠈⢣⡀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡟⣇⣰⢫⢻⢉⠉⠀⣿⡆⠀⠀⡸⡏⠀⠀⠀⠀⠀⠀⢇
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⡇⡇⠈⢸⢸⢸⠀⠀⡇⡇⠀⠀⠁⠻⡄⡠⠂⠀⠀⠀⠘
+⢤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠛⠓⡇⠀⠸⡆⢸⠀⢠⣿⠀⠀⠀⠀⣰⣿⣵⡆⠀⠀⠀⠀
+⠈⢻⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡿⣦⣀⡇⠀⢧⡇⠀⠀⢺⡟⠀⠀⠀⢰⠉⣰⠟⠊⣠⠂⠀⡸
+⠀⠀⢻⣿⣿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⢧⡙⠺⠿⡇⠀⠘⠇⠀⠀⢸⣧⠀⠀⢠⠃⣾⣌⠉⠩⠭⠍⣉⡇
+⠀⠀⠀⠻⣿⣿⣿⣿⣿⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣞⣋⠀⠈⠀⡳⣧⠀⠀⠀⠀⠀⢸⡏⠀⠀⡞⢰⠉⠉⠉⠉⠉⠓⢻⠃
+⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⢀⣀⠠⠤⣤⣤⠤⠞⠓⢠⠈⡆⠀⢣⣸⣾⠆⠀⠀⠀⠀⠀⢀⣀⡼⠁⡿⠈⣉⣉⣒⡒⠢⡼⠀
+⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣿⣿⣿⣎⣽⣶⣤⡶⢋⣤⠃⣠⡦⢀⡼⢦⣾⡤⠚⣟⣁⣀⣀⣀⣀⠀⣀⣈⣀⣠⣾⣅⠀⠑⠂⠤⠌⣩⡇⠀
+⠀⠀⠀⠀⠀⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡁⣺⢁⣞⣉⡴⠟⡀⠀⠀⠀⠁⠸⡅⠀⠈⢷⠈⠏⠙⠀⢹⡛⠀⢉⠀⠀⠀⣀⣀⣼⡇⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣽⣿⡟⢡⠖⣡⡴⠂⣀⣀⣀⣰⣁⣀⣀⣸⠀⠀⠀⠀⠈⠁⠀⠀⠈⠀⣠⠜⠋⣠⠁⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⡟⢿⣿⣿⣷⡟⢋⣥⣖⣉⠀⠈⢁⡀⠤⠚⠿⣷⡦⢀⣠⣀⠢⣄⣀⡠⠔⠋⠁⠀⣼⠃⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⡄⠈⠻⣿⣿⢿⣛⣩⠤⠒⠉⠁⠀⠀⠀⠀⠀⠉⠒⢤⡀⠉⠁⠀⠀⠀⠀⠀⢀⡿⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⢿⣤⣤⠴⠟⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠑⠤⠀⠀⠀⠀⠀⢩⠇⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
 <img width="975" height="479" alt="image" src="https://github.com/user-attachments/assets/fb1aace2-6abe-44be-9d76-f026d75a64f8" />
 
 -------------------------------------------------------------------------------------------------------------------
@@ -14,9 +40,10 @@
 
 **1. Challenge Overview**
 - The challenge presented participants with a cryptographic puzzle disguised as a story about discovering a 'magical meal' hidden in an ancient papyrus. The challenge provided the following information:
-
+-------------------------------------------------------------------------------------------------------------------
 <img width="975" height="553" alt="image" src="https://github.com/user-attachments/assets/dc8149b1-6674-4ea0-b2fc-339ac7fb13ff" />
 
+-------------------------------------------------------------------------------------------------------------------
 
 •	A large prime number **p**
 •	A generator **g**
@@ -25,8 +52,10 @@
 
 The goal was to decrypt the ciphertext to reveal the name of the magical meal, which would be wrapped in the flag format: **novruzCTF{meal_name}**
 
+-------------------------------------------------------------------------------------------------------------------
 <img width="975" height="532" alt="image" src="https://github.com/user-attachments/assets/55c1acfa-1a27-4039-887f-2b50ebce7dc4" />
 
+-------------------------------------------------------------------------------------------------------------------
 
 **2. Background: Understanding ElGamal Encryption**
 ElGamal encryption is a public-key cryptosystem based on the difficulty of computing discrete logarithms. Here's how it 
@@ -69,7 +98,7 @@ To decrypt the ciphertext using the private key *x*:
 
 - The Pohlig-Hellman algorithm is a method for solving the discrete logarithm problem when p - 1 can be factored into small prime factors.
   
-**Simple analogy:** Imagine you're trying to crack a combination lock with 1,000,000 possible combinations. That would take forever. But what if the lock was poorly designed and you could test each digit separately? Instead of trying all million combinations, you'd only need to try 10 options for each of 6 digits—much easier!
+- **Simple analogy:** Imagine you're trying to crack a combination lock with 1,000,000 possible combinations. That would take forever. But what if the lock was poorly designed and you could test each digit separately? Instead of trying all million combinations, you'd only need to try 10 options for each of 6 digits—much easier!
 Similarly, if *p - 1* breaks down into small factors, the Pohlig-Hellman algorithm can solve the discrete logarithm problem by breaking it into smaller, easier sub-problems and then combining the results.
 
 **3.2 Why This Challenge is Vulnerable**
@@ -94,6 +123,7 @@ Key Insight: A strong ElGamal implementation should use a safe prime *(where p -
 
 - We'll use Python with the pycryptodome and sympy libraries, which provide built-in functions for cryptographic operations and the discrete logarithm problem.
 
+-------------------------------------------------------------------------------------------------------------------
 **5. Step-by-Step Solution**
 
 - Step 1: Data Extraction
@@ -141,6 +171,7 @@ Our goal is to find x. This is the discrete logarithm problem: given ***g, h, an
 - The decrypted message *m* is currently a very large number. We need to convert it back to readable text. In cryptography, text is often encoded as numbers using *ASCII* or *UTF-8*:
 
 <pre>from Crypto.Util.number import long_to_bytes  meal = long_to_bytes(m).decode('utf-8').strip() print(f"The magical meal is: {meal}") print(f"Flag: novruzCTF{{{meal}}}")</pre>
+-------------------------------------------------------------------------------------------------------------------
 
 **6. Complete Code Implementation**
 
@@ -159,6 +190,7 @@ Before running the script, install the required Python libraries:
   pip install pycryptodome sympy
 </pre>
 
+-------------------------------------------------------------------------------------------------------------------
 **7. Results and Flag**
 
 - When we run the script, it successfully:
@@ -176,6 +208,7 @@ Before running the script, install the required Python libraries:
 ```
 
 ***Note: The actual meal name and private key value have been redacted to preserve the integrity of the challenge for others who may attempt it.***
+-------------------------------------------------------------------------------------------------------------------
 
 **8. Key Takeaways**
 
@@ -200,3 +233,6 @@ Before running the script, install the required Python libraries:
 •	Legacy systems using outdated cryptographic standards
 
 - Understanding these attacks helps security professionals audit systems and ensure proper cryptographic hygiene.
+-------------------------------------------------------------------------------------------------------------------
+
+- I hope this write up helped you <3
